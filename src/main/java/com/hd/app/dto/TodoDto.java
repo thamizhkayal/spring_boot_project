@@ -8,9 +8,9 @@ public class TodoDto {
     int userId;
     String name;
     String description;
-    LocalDate dueDate;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
-    boolean isCompleted;
+    // LocalDate dueDate;
+    // LocalDateTime createdAt;
+    // LocalDateTime updatedAt;
+    // boolean isCompleted;
 
 }
