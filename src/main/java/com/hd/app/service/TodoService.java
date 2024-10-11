@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.hd.app.exceptions.NotFoundException;
 import com.hd.app.model.Todo;
+import com.hd.app.model.User;
 import com.hd.app.repository.TodoRepository;
+import com.hd.app.repository.UserRepository;
 
 @Service
 public class TodoService {
@@ -15,11 +17,21 @@ public class TodoService {
     @Autowired
     private TodoRepository todoRepo;
 
-    public List<Todo> getAllTodo() {
-        return todoRepo.findAll();
+    @Autowired
+    private UserRepository userRepo;
+
+    public List<Todo> getAllTodo(int userId) {
+        return todoRepo.findByUserId(userId);
     }
 
-    public Todo addTodo(Todo todo) {
+    public Todo getTodoById(int id) {
+        return todoRepo.findById(id).orElseThrow(() -> new NotFoundException("Todo Not Found by this id : " + id));
+    }
+
+    public Todo addTodo(int userId, Todo todo) {
+        User user = userRepo.findById(userId)
+                .orElseThrow(() -> new NotFoundException("User Not Found || Id : " + userId));
+        todo.setUser(user);
         return todoRepo.save(todo);
     }
 
