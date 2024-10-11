@@ -29,10 +29,10 @@ public class Todo {
     @Column
     LocalDateTime updatedAt;
     @Column
-    boolean isCompleted;
+    boolean completed;
 
     public Todo() {
-        this.isCompleted = false;
+        this.completed = false;
     }
 
     public Todo(int userId, String name, String description, LocalDate dueDate) {
@@ -49,7 +49,7 @@ public class Todo {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
-        this.isCompleted = isComplted;
+        this.completed = isComplted;
     }
 
     public Todo(int userId, String name, String description, String dueDate, Boolean isComplted) {
@@ -125,11 +125,11 @@ public class Todo {
     }
 
     public boolean isCompleted() {
-        return isCompleted;
+        return completed;
     }
 
     public void setCompleted(boolean isCompleted) {
-        this.isCompleted = isCompleted;
+        this.completed = isCompleted;
     }
 
 }
