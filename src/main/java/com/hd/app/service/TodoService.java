@@ -39,4 +39,13 @@ public class TodoService {
                 .orElseThrow(() -> new NotFoundException("Todo not found with id " + id));
     }
 
+    public void deleteTodo(int id) {
+        if (todoRepo.existsById(id)) {
+            todoRepo.deleteById(id);
+        } else {
+            throw new NotFoundException("Todo not found in this id : " + id);
+        }
+
+    }
+
 }
