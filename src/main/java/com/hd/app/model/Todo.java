@@ -14,6 +14,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity(name = "todos")
 public class Todo {
@@ -27,8 +29,9 @@ public class Todo {
     String description;
     @Column
     LocalDate dueDate;
-    @Column
+    @Temporal(TemporalType.TIMESTAMP)
     LocalDateTime createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column
     LocalDateTime updatedAt;
     @Column
